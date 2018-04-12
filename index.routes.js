@@ -1,5 +1,5 @@
 const express = require('express');
-const userRoutes = require('./src/users/users.router');
+const userRoutes = require('./src/teachers/teachers.router');
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.get('/health-check', (req, res) =>
   res.send('OK')
 );
 
-// mount user routes at /users
-router.use('/users', userRoutes);
+// mount user routes at /teachers
+router.use('/teacher', userRoutes);
 
 module.exports = router;
