@@ -61,7 +61,7 @@ exports.registerStudentsForTeacher = (req, res) => {
  * @param res
  */
 exports.commonstudents = (req, res) => {
-  teachersComponent.getTeachersByEmail(req.query.teachers).then(es => {
+  teachersComponent.getTeachersByEmail(req.query.teachers.split(',')).then(es => {
     adminComponent
       .getCommonStudents(es.map(e => e.id))
       .then(students => res.status(httpStatus.OK).json(students))

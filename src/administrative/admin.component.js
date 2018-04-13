@@ -30,7 +30,7 @@ exports.registerStudents = (teacher, students) => {
  * @returns {Promise<Array<Model>>|*}
  */
 exports.getCommonStudents = teachers => {
-  const count = teachers.length - 1 === -1 ? 0 : teachers.length;
+  const count = teachers.length - 1 === -1 ? 0 : teachers.length - 1;
   return db.registeredStudents.findAll({
     attributes: ['studentId'],
     where: {
