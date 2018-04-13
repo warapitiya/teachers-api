@@ -5,13 +5,23 @@
 module.exports = (sequelize, DataTypes) => {
   const registeredStudents = sequelize.define('registered_students', {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
       primaryKey: true,
       autoIncrement: true
+    },
+    active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
   }, {
     timestamps: false,
     freezeTableName: true
   });
+
+  registeredStudents.associate = (models) => {
+    models.registeredStudents.belongsTo(models.teachers);
+    models.registeredStudents.belongsTo(models.students);
+  };
   return registeredStudents;
 };

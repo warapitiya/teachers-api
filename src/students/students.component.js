@@ -1,6 +1,4 @@
-const DB = require('../db');
-const config = require('../../config/config');
-const db = DB(config.dbConfig);
+const db = require('../db');
 
 exports.findOrCreate = (email) => {
   return db.students.findOrCreate({

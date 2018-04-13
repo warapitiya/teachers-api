@@ -7,8 +7,7 @@ const teacherController = require('./teachers.controller');
  */
 router
   .get('/', teacherController.getTeachers)
-  .post('/', teacherController.addTeacher)
-  .get('/test', teacherController.registered)
-  .post('/register', teacherController.registerStudentsForTeacher);
+  .post('/', teacherController.addTeacher);
+
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const express = require('express');
 const userRoutes = require('./src/teachers/teachers.router');
+const adminRoutes = require('./src/administrative/admin.router');
 
 const router = express.Router();
 
@@ -12,5 +13,6 @@ router.get('/health-check', (req, res) =>
 
 // mount user routes at /teachers
 router.use('/teacher', userRoutes);
+router.use('/admin', adminRoutes);
 
 module.exports = router;

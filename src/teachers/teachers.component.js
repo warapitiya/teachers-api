@@ -1,6 +1,4 @@
-let DB = require('../db');
-const config = require('./../../config/config');
-const db = DB(config.dbConfig);
+const db = require('../db');
 
 /**
  * Find all teachers
@@ -27,7 +25,12 @@ exports.createTeacher = (teacher) => {
 };
 
 exports.findAllRegistered = () => {
-  return db.registeredStudents.findAll();
+  return db.registeredStudents.findAll({
+    where: {
+      active: true
+    },
+    include: [db.teachers, db.students]
+  });
 };
 
 exports.findOrCreate = (email) => {
@@ -37,9 +40,4 @@ exports.findOrCreate = (email) => {
     },
     defaults: {email}
   });
-};
-
-
-exports.registerStudents = (teacher, students) => {
-
 };

@@ -39,6 +39,7 @@ module.exports = {
   ],
   scopes: [
     'app',
+    'admin',
     'teachers',
     'students'
   ],
