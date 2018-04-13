@@ -11,7 +11,7 @@ Run bellow Postman Collection to get started.
 
 ## About App
 
-* Application is written in Nodejs and will requried latest LTS (v8.11.1) or higher.
+* Application is written in Nodejs and will required latest LTS (v8.11.1) or higher.
 * Codebase is written using ES6 features.
 * MySQL instance deplyed on [DigitalOcean](https://www.digitalocean.com/).
 * Application deplyed on [heroku](https://www.heroku.com/) instance.
