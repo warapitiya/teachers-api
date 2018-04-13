@@ -26,10 +26,12 @@ exports.createTeacher = (teacher) => {
 
 exports.findAllRegistered = () => {
   return db.registeredStudents.findAll({
-    where: {
-      active: true
-    },
-    include: [db.teachers, db.students]
+    include: [db.teachers, {
+      model: db.students,
+      where: {
+        active: true
+      }
+    }]
   });
 };
 

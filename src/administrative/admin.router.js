@@ -10,8 +10,9 @@ const adminController = require('./admin.controller');
  * GET teachers listing
  */
 router
-  .get('/test', adminController.registered)
+  .get('/', adminController.registered)
   .post('/register', adminController.registerStudentsForTeacher)
-  .get('/commonstudents', adminController.commonstudents);
+  .get('/commonstudents', adminController.commonstudents)
+  .post('/suspend', adminController.suspendStudent);
 
 module.exports = router;

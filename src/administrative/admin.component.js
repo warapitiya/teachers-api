@@ -2,6 +2,7 @@
  * Created by warapitiya on 4/13/18.
  */
 const db = require('../db');
+const studentsComponent = require('../students/students.component');
 
 exports.registerStudents = (teacher, students) => {
   students.map((student) => {
@@ -19,23 +20,26 @@ exports.registerStudents = (teacher, students) => {
 };
 
 exports.getCommonStudents = (teachers) => {
+  const count = teachers.length - 1 === -1 ? 0 : teachers.length;
   return db.registeredStudents.findAll({
     attributes: ['studentId'],
     where: {
       teacherId: {
         [db.sequelize.Op.in]: teachers
-      },
-      active: true
+      }
     },
     group: 'studentId',
-    having: db.sequelize.literal(`count(*) > 0`),
+    having: db.sequelize.literal(`count(*) > ${count}`),
     include: [db.students]
   });
-
-//   return db.sequelize.query(`SELECT t1.studentId
-// FROM registered_students as t1
-// WHERE t1.teacherId IN (7, 4, 2)
-// GROUP BY (t1.studentId)
-// HAVING count(*) > 1;`, { type: db.sequelize.QueryTypes.SELECT});
-
 };
+
+exports.suspend = (email) => {
+  return studentsComponent.find(email)
+    .then(student => {
+      student.active = false;
+      return student.save();
+    });
+};
+
+

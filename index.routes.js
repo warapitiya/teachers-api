@@ -11,7 +11,7 @@ router.get('/health-check', (req, res) =>
   res.send('OK')
 );
 
-// mount user routes at /teachers
+// mount teachers routes at /teachers
 router.use('/teacher', userRoutes);
 router.use('/admin', adminRoutes);
 

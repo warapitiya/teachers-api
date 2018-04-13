@@ -42,3 +42,12 @@ exports.commonstudents = (req, res) => {
     });
 
 };
+
+
+exports.suspendStudent = (req, res) => {
+  adminComponent.suspend(req.body.student)
+    .then(() => {
+      res.status(204).end();
+    })
+    .catch((e) => console.error(suspend));
+};

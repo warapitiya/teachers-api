@@ -7,6 +7,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
+    },
+    active: {
+      type: DataTypes.BOOLEAN,
     }
   }, {
     timestamps: false,

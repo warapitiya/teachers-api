@@ -6,3 +6,12 @@ exports.findOrCreate = (email) => {
     default: {email}
   });
 };
+
+exports.find = (email) => {
+  return db.students.find({
+    where: {
+      email,
+      active: true
+    }
+  })
+};

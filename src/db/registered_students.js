@@ -9,10 +9,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
-    },
-    active: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false
     }
   }, {
     timestamps: false,
