@@ -1,3 +1,4 @@
+const httpStatus = require('http-status');
 const teachersComponent = require('./teachers.component');
 
 /**
@@ -8,10 +9,10 @@ const teachersComponent = require('./teachers.component');
 exports.getTeachers = (req, res) => {
   if (req.query.emails) {
     teachersComponent.getTeachersByEmail(req.query.emails.split(','))
-      .then((teachers) => res.status(200).json(teachers));
+      .then((teachers) => res.status(httpStatus.OK).json(teachers));
   } else {
     teachersComponent.findAllTeachers()
-      .then((teachers) => res.status(200).json(teachers));
+      .then((teachers) => res.status(httpStatus.OK).json(teachers));
   }
 };
 
@@ -22,6 +23,6 @@ exports.getTeachers = (req, res) => {
  */
 exports.addTeacher = (req, res) => {
   teachersComponent.createTeacher(req.body)
-    .then((teacher) => res.json(teacher))
-    .catch((error) => res.status(400));
+    .then((teacher) => res.status(httpStatus.CREATED).json(teacher))
+    .catch((error) => res.status(httpStatus.BAD_REQUEST).end());
 };

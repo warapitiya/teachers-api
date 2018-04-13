@@ -10,7 +10,7 @@ const adminController = require('./admin.controller');
  * GET teachers listing
  */
 router
-  .get('/', adminController.registered)
+  .get('/registeredstudents', adminController.registered)
   .post('/register', adminController.registerStudentsForTeacher)
   .get('/commonstudents', adminController.commonstudents)
   .post('/suspend', adminController.suspendStudent)

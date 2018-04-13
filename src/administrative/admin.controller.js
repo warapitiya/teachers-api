@@ -2,13 +2,15 @@
  * Created by warapitiya on 4/13/18.
  */
 const async = require('async');
+const httpStatus = require('http-status');
 const teachersComponent = require('./../teachers/teachers.component');
 const studentsComponent = require('./../students/students.component');
 const adminComponent = require('./admin.component');
 
 exports.registered = (req, res) => {
   teachersComponent.findAllRegistered()
-    .then((d) => res.json(d));
+    .then((d) => res.status(httpStatus.OK).json(d))
+    .catch(error => res.status(httpStatus.BAD_REQUEST).end())
 };
 
 exports.registerStudentsForTeacher = (req, res) => {
@@ -24,10 +26,10 @@ exports.registerStudentsForTeacher = (req, res) => {
       }, (err) => {
         if (err) {
           console.error('Error', err);
-          res.status(400);
+          res.status(httpStatus.BAD_REQUEST).end();
         } else {
           adminComponent.registerStudents(teacher[0], students);
-          res.status(204).end();
+          res.status(httpStatus.NO_CONTENT).end();
         }
       });
     });
@@ -38,7 +40,7 @@ exports.commonstudents = (req, res) => {
   teachersComponent.getTeachersByEmail(req.query.teachers)
     .then(es => {
       adminComponent.getCommonStudents(es.map(e => e.id))
-        .then((d) => res.json(d));
+        .then((d) => res.status(httpStatus.OK).json(d));
     });
 
 };
@@ -47,9 +49,9 @@ exports.commonstudents = (req, res) => {
 exports.suspendStudent = (req, res) => {
   adminComponent.suspend(req.body.student)
     .then(() => {
-      res.status(204).end();
+      res.status(httpStatus.NO_CONTENT).end();
     })
-    .catch((e) => console.error(suspend));
+    .catch((e) => res.status(httpStatus.BAD_REQUEST).end());
 };
 
 exports.notifications = (req, res) => {
@@ -58,9 +60,11 @@ exports.notifications = (req, res) => {
       const mentions = req.body.notification
         .match(/\B@[a-zA-Z0-9!@.]+\b/gi)
         .map((s) => s.substr(1));
-      res.json({
-        recipients: a.map(e => e.recipients).concat(mentions)
-      });
+      res
+        .status(httpStatus.OK)
+        .json({
+          recipients: a.map(e => e.recipients).concat(mentions)
+        });
     })
-    .catch((e) => console.error(e));
+    .catch((e) => res.status(httpStatus.BAD_REQUEST).end());
 };
