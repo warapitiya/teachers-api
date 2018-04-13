@@ -17,3 +17,7 @@ Run bellow Postman Collection to get started.
 * Application deplyed on [heroku](https://www.heroku.com/) instance.
 * Application use [expressjs](https://expressjs.com/) framework.
 * Integration testing is written in [mochajs](https://mochajs.org/) and use [istanbuljs](https://istanbul.js.org/) to generate code coverage.
+
+## Changelog
+
+List of changes in this repo. [Changelog](https://github.com/warapitiya/teachers-api/blob/master/CHANGELOG.md)
