@@ -1,5 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define('teachers', {
+  return sequelize.define(
+    'teachers',
+    {
       email: {
         type: DataTypes.STRING
       }
@@ -7,5 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       timestamps: false,
       freezeTableName: true
-    });
+    }
+  );
 };

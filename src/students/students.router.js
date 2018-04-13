@@ -7,9 +7,8 @@ const router = express.Router();
 const studentController = require('./students.controller');
 
 /**
- * GET teachers listing
+ * GET students listing
  */
-router
-  .get('/', studentController.getStudents);
+router.get('/', studentController.getStudents);
 
 module.exports = router;

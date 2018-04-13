@@ -3,11 +3,10 @@ require('dotenv').config();
 module.exports = {
   env: process.env.NODE_ENV,
   dbConfig: {
-    database: 'school',
-    user: 'root',
-    password: 'root',
-    host: 'localhost',
-    // host: '206.189.47.125',
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    host: process.env.DB_HOST,
     dialect: 'mysql',
     operatorsAliases: false,
 

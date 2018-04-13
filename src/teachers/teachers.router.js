@@ -1,3 +1,7 @@
+/**
+ * Created by warapitiya on 4/13/18.
+ */
+
 const express = require('express');
 const router = express.Router();
 const teacherController = require('./teachers.controller');
@@ -8,6 +12,5 @@ const teacherController = require('./teachers.controller');
 router
   .get('/', teacherController.getTeachers)
   .post('/', teacherController.addTeacher);
-
 
 module.exports = router;

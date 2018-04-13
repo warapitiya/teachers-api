@@ -4,8 +4,13 @@
 const db = require('../db');
 const studentsComponent = require('../students/students.component');
 
+/**
+ * Register students for teacher
+ * @param teacher
+ * @param students
+ */
 exports.registerStudents = (teacher, students) => {
-  students.map((student) => {
+  students.map(student => {
     db.registeredStudents.findOrCreate({
       where: {
         teacherId: teacher.id,
@@ -19,7 +24,12 @@ exports.registerStudents = (teacher, students) => {
   });
 };
 
-exports.getCommonStudents = (teachers) => {
+/**
+ * Get common students
+ * @param teachers
+ * @returns {Promise<Array<Model>>|*}
+ */
+exports.getCommonStudents = teachers => {
   const count = teachers.length - 1 === -1 ? 0 : teachers.length;
   return db.registeredStudents.findAll({
     attributes: ['studentId'],
@@ -34,16 +44,26 @@ exports.getCommonStudents = (teachers) => {
   });
 };
 
-exports.suspend = (email) => {
-  return studentsComponent.find(email)
-    .then(student => {
-      student.active = false;
-      return student.save();
-    });
+/**
+ * Suspend a student
+ * @param email
+ * @returns {Promise|*|PromiseLike<T>|Promise<T>}
+ */
+exports.suspend = email => {
+  return studentsComponent.find(email).then(student => {
+    student.active = false;
+    return student.save();
+  });
 };
 
-exports.filterNotification = (teacherEmail) => {
-  return db.sequelize.query(`
+/**
+ * filter notification
+ * @param teacherEmail
+ * @returns {*}
+ */
+exports.filterNotification = teacherEmail => {
+  return db.sequelize.query(
+    `
   SELECT s.email as recipients
 FROM (
   SELECT *
@@ -52,7 +72,7 @@ FROM (
 ) as s
 INNER JOIN registered_students as rs1 ON s.id = rs1.studentId
 INNER JOIN teachers t on rs1.teacherId = t.id
-where t.email = '${teacherEmail}'`, {type: db.sequelize.QueryTypes.SELECT});
+where t.email = '${teacherEmail}'`,
+    {type: db.sequelize.QueryTypes.SELECT}
+  );
 };
-
-
