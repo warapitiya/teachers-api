@@ -42,4 +42,17 @@ exports.suspend = (email) => {
     });
 };
 
+exports.filterNotification = (teacherEmail) => {
+  return db.sequelize.query(`
+  SELECT s.email as recipients
+FROM (
+  SELECT *
+  FROM students as s1
+  where active = true
+) as s
+INNER JOIN registered_students as rs1 ON s.id = rs1.studentId
+INNER JOIN teachers t on rs1.teacherId = t.id
+where t.email = '${teacherEmail}'`, {type: db.sequelize.QueryTypes.SELECT});
+};
+
 

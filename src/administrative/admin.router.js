@@ -13,6 +13,7 @@ router
   .get('/', adminController.registered)
   .post('/register', adminController.registerStudentsForTeacher)
   .get('/commonstudents', adminController.commonstudents)
-  .post('/suspend', adminController.suspendStudent);
+  .post('/suspend', adminController.suspendStudent)
+  .post('/retrievefornotifications', adminController.notifications);
 
 module.exports = router;

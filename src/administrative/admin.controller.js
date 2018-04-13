@@ -51,3 +51,16 @@ exports.suspendStudent = (req, res) => {
     })
     .catch((e) => console.error(suspend));
 };
+
+exports.notifications = (req, res) => {
+  adminComponent.filterNotification(req.body.teacher)
+    .then((a) => {
+      const mentions = req.body.notification
+        .match(/\B@[a-zA-Z0-9!@.]+\b/gi)
+        .map((s) => s.substr(1));
+      res.json({
+        recipients: a.map(e => e.recipients).concat(mentions)
+      });
+    })
+    .catch((e) => console.error(e));
+};

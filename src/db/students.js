@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define('students', {
+  const students = sequelize.define('students', {
     email: {
       type: DataTypes.STRING,
     },
@@ -15,4 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     freezeTableName: true, // Model tableName will be the same as the model name
   });
+
+  students.associate = (models) => {
+    models.students.hasMany(models.registeredStudents);
+  };
+
+  return students;
 };
