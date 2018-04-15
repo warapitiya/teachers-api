@@ -3,6 +3,8 @@
  */
 
 const express = require('express');
+const validate = require('express-validation');
+const {createTeacher} = require('./terchers.validator');
 const router = express.Router();
 const teacherController = require('./teachers.controller');
 
@@ -11,6 +13,6 @@ const teacherController = require('./teachers.controller');
  */
 router
   .get('/', teacherController.getTeachers)
-  .post('/', teacherController.addTeacher);
+  .post('/', validate(createTeacher), teacherController.addTeacher);
 
 module.exports = router;

@@ -42,7 +42,7 @@ exports.registerStudentsForTeacher = (req, res) => {
       err => {
         if (err) {
           res.status(httpStatus.BAD_REQUEST).json({
-            error: `Error while geting registered students for teacher. ${
+            error: `Error while getting registered students for teacher. ${
               err.message
               }`
           });

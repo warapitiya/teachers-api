@@ -16,6 +16,7 @@ Run bellow Postman Collection to get started.
 * MySQL instance deplyed on [DigitalOcean](https://www.digitalocean.com/).
 * Application deplyed on [heroku](https://www.heroku.com/) instance.
 * Application use [expressjs](https://expressjs.com/) framework.
+* [Joi](https://github.com/hapijs/joi) library and [express-validation](https://github.com/andrewkeig/express-validation) middleware for validation.
 * Integration testing is written in [mochajs](https://mochajs.org/) and use [istanbuljs](https://istanbul.js.org/) to generate code coverage.
 
 ## Changelog
