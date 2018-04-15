@@ -1,4 +1,4 @@
-# Teachers-API ![package](https://img.shields.io/badge/package-v1.0.0-blue.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) ![coverage](https://img.shields.io/badge/coverage-90%25-brightgreen.svg)
+# Teachers-API ![package](https://img.shields.io/badge/package-v1.0.1-blue.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) ![coverage](https://img.shields.io/badge/coverage-90%25-brightgreen.svg)
 
 ## About
 

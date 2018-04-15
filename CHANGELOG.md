@@ -1,3 +1,13 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/warapitiya/teachers-api/compare/v1.0.0...v1.0.1) (2018-04-15)
+
+
+### Features
+
+* **app:** add API validations ([3d98087](https://github.com/warapitiya/teachers-api/commit/3d98087))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/warapitiya/teachers-api/compare/ba2de46...v1.0.0) (2018-04-13)
 
